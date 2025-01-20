@@ -1,3 +1,4 @@
+import { configmodule } from './config';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -9,15 +10,12 @@ import { UserRepository } from './app.repository';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'pavel',
-      database: 'configurationtrain',
+      url: process.env.DB_URI,
       autoLoadEntities: true,
       synchronize: true,
     }),
     TypeOrmModule.forFeature([User]),
+    configmodule,
   ],
   controllers: [AppController],
   providers: [AppService, UserRepository],
