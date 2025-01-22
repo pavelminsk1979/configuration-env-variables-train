@@ -11,6 +11,7 @@ export class UserRepository {
   ) {}
 
   async createUsers(newUser: { name: string }) {
+    console.log('masterNew');
     const user = new User();
     user.name = newUser.name;
 
