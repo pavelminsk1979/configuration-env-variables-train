@@ -7,6 +7,8 @@ export class AppController {
 
   @Get()
   async getUsers() {
+    console.log('new');
+    console.log('new2');
     return this.appService.getUsers();
   }
 
